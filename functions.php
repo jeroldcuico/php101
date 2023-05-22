@@ -123,14 +123,14 @@
         $array = array('jet', 'jetlag', 'jetlag', 'lag', 'laggers', 'jets', 'lag', 'where');
         echo '<h6>Original Array: ' . implode(', ', $array) . '</h6>';
         echo "<br/>";
-        echo 'Removes duplicate: ' . implode(', ', array_values(array_unique($array)));
+        echo 'Removes duplicate: ' . implode(', ', array_unique($array));
         ?>
     </section>
 
     <section class="my-5 py-5 text-center bg-danger">
         <form class="row g-3 justify-content-center" method="POST">
             <div class="col-2">
-                <input type="number" placeholder="Enter numbers to convert" autocomplete="off" class="form-control"
+                <input type="number" placeholder="Enter number" autocomplete="off" class="form-control"
                     name="armstrongvalue">
             </div>
             <div class="col-auto">
@@ -148,6 +148,7 @@
                         $count = count($array);
                         $sum = 0;
                         foreach ($array as $num) {
+                            //$sum += $num ** $count;
                             $sum += pow($num, $count);
                         }
                         echo ($sum === (integer) $number) ? "$sum and $number are Armstrong value" : "$sum and $number are not Armstrong value";
