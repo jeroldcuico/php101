@@ -90,7 +90,9 @@ function displayStudents($students)
 </head>
 
 <body class="text-bg-dark">
-
+    <section class="my-5 py-5 text-center bg-dark">
+        <a href="functions.php" class="btn btn-large btn-danger">Click to proceed to Function Exercise</a>
+    </section>
     <section class="my-5 py-5 text-center bg-secondary">
         <?php
         //! Logic 1
@@ -148,20 +150,20 @@ function displayStudents($students)
         $start = 1;
         $end = 10;
         echo "<table class='table table-dark table-striped'>";
-            echo "<tr><th class='table-danger'>0</th>";
-            for ($i = $start; $i <= $end; $i++) {
-                echo "<th class='table-success'>$i</th>";
+        echo "<tr><th class='table-danger'>0</th>";
+        for ($i = $start; $i <= $end; $i++) {
+            echo "<th class='table-success'>$i</th>";
+        }
+        echo "</tr>";
+        for ($i = $start; $i <= $end; $i++) {
+            echo "<tr>";
+            echo "<th class='table-success'>$i</th>";
+            for ($j = $start; $j <= $end; $j++) {
+                $result = $i / $j;
+                echo "<td>" . round($result, 3) . "</td>";
             }
             echo "</tr>";
-            for ($i = $start; $i <= $end; $i++) {
-                echo "<tr>";
-                echo "<th class='table-success'>$i</th>";
-                for ($j = $start; $j <= $end; $j++) {
-                    $result = $i / $j;
-                    echo "<td>" . round($result, 3) . "</td>";
-                }
-                echo "</tr>";
-            }
+        }
         echo "</table>";
         ?>
     </section>
