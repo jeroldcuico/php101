@@ -1,0 +1,1 @@
+{"version":1,"defects":{"ExerciseTest::testCheckLetter":7,"ExerciseTest::testconverttoWord":7,"ExerciseTest::testDivisiblebyThree":7},"times":{"ExerciseTest::testCheckLetter":0.01,"ExerciseTest::testconverttoWord":0.003,"ExerciseTest::testDivisiblebyThree":0,"ExerciseTest::testisArmstrong":0,"ExerciseTest::testUnique":0}}

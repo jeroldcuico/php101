@@ -25,27 +25,22 @@
             </div>
             <div class="col-auto py-2">
                 <?php
-                function CheckLetter()
+                function CheckLetter($letter)
                 {
-                    $character = strtolower($_POST["letter"]);
+                    $character = strtolower($letter);
                     $vowels = ["a", "e", "i", "o", "u"];
-                    if (is_numeric($character)) {
-                        echo "You entered a number";
-                        return;
-                    }
-                    if (empty($character)) {
-                        echo "Nothing you entered";
-                        return;
-                    }
+                    $result = '';
                     if (in_array($character, $vowels)) {
-                        echo "The Letter $character declared is a Vowel";
+                        $result =   "The Letter $character declared is a Vowel";
                     } else {
-                        echo "The Letter $character declared is a Consonant";
+                        $result =   "The Letter $character declared is a Consonant";
                     }
+
+                    return $result;
 
                 }
                 if (isset($_POST["checkVowel"])) {
-                    CheckLetter();
+                   echo CheckLetter($_POST["letter"]);
                 }
                 ?>
             </div>
@@ -80,11 +75,10 @@
                         }
 
                     }
-                    echo "You entered: " . $number . "<br/>";
-                    echo strtoupper($res);
+                    return strtoupper($res);
                 }
                 if (isset($_POST["convertoWord"])) {
-                    converttoWord($_POST['numbertoconvert']);
+                    echo converttoWord($_POST['numbertoconvert']);
                 }
                 ?>
             </div>
@@ -103,15 +97,17 @@
                 <?php
                 function DivisiblebyThree($number)
                 {
+                    $res = '';
                     if (strlen($number) === 0) {
-                        echo "Input Number";
+                        $res =  "Input Number";
                     } else {
                         //Trying ternary
-                        echo $number % 3 === 0 ? "$number is Divisible 3" : "$number is Not Divisible by 3";
+                        $res = $number % 3 === 0 ? "$number is Divisible 3" : "$number is Not Divisible by 3";
                     }
+                    return $res;
                 }
                 if (isset($_POST["divisiblethree"])) {
-                    DivisiblebyThree($_POST['numberdivisible']);
+                    echo DivisiblebyThree($_POST['numberdivisible']);
                 }
                 ?>
             </div>
@@ -121,9 +117,14 @@
     <section class="my-5 py-5 text-center bg-info bg-gradient">
         <?php
         $array = array('jet', 'jetlag', 'jetlag', 'lag', 'laggers', 'jets', 'lag', 'where');
+        function Unique($arr){
+            return implode(', ', array_unique($arr));
+        }
+
+
         echo '<h6>Original Array: ' . implode(', ', $array) . '</h6>';
         echo "<br/>";
-        echo 'Removes duplicate: ' . implode(', ', array_unique($array));
+        echo 'Removes duplicate: ' . Unique($array);
         ?>
     </section>
 
@@ -140,8 +141,9 @@
                 <?php
                 function isArmstrong($number)
                 {
+                    $res = '';
                     if (strlen($number) === 0) {
-                        echo "No inputs added.";
+                        $res =  "No inputs added.";
                         return;
                     } else {
                         $array = str_split($number);
@@ -151,11 +153,12 @@
                             //$sum += $num ** $count;
                             $sum += pow($num, $count);
                         }
-                        echo ($sum === (integer) $number) ? "$sum and $number are Armstrong value" : "$sum and $number are not Armstrong value";
+                        $res = ($sum === (integer) $number) ? "$sum and $number are Armstrong value" : "$sum and $number are not Armstrong value";
                     }
+                    return $res;
                 }
                 if (isset($_POST["armStrongSubmit"])) {
-                    isArmstrong($_POST['armstrongvalue']);
+                    echo isArmstrong($_POST['armstrongvalue']);
                 }
                 ?>
             </div>
