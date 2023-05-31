@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserInformationController;
+use App\Http\Controllers\OptionController;
+use App\Http\Controllers\OptionGroupController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +30,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::prefix('manage')->group(function(){
+        Route::resource('/users', UserController::class);
+        Route::post('/users/{id}/restore', [UserController::class, 'restore'])->name('users.restore');
+        Route::resource('/user_informations', UserInformationController::class);
+
+    });
+
+    Route::resource('/options', OptionController::class);
+    Route::resource('/optionsgroups', OptionGroupController::class);
 });
+
+
 
 require __DIR__.'/auth.php';
