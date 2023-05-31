@@ -1,4 +1,4 @@
-# WD58P Capstone
+# My Practice Laravel
 
 ## Getting Started
 
